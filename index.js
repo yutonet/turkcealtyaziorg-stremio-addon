@@ -32,8 +32,10 @@ const agentConfig = {
   maxFreeSockets: 256,
 };
 
-axios.defaults.httpAgent = new HttpProxyAgent(agentConfig);
-axios.defaults.httpsAgent = new HttpsProxyAgent(agentConfig);
+if(agentConfig.proxy) {
+  axios.defaults.httpAgent = new HttpProxyAgent(agentConfig);
+  axios.defaults.httpsAgent = new HttpsProxyAgent(agentConfig);
+}
 
 const CACHE_MAX_AGE = 4 * 60 * 60; // 4 hours in seconds
 const STALE_REVALIDATE_AGE = 4 * 60 * 60; // 4 hours

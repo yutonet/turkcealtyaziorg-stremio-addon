@@ -12,8 +12,11 @@ const agentConfig = {
     maxFreeSockets: 256,
   };
 
-axios.defaults.httpAgent = new HttpProxyAgent(agentConfig);
-axios.defaults.httpsAgent = new HttpsProxyAgent(agentConfig);
+
+if(agentConfig.proxy) {
+    axios.defaults.httpAgent = new HttpProxyAgent(agentConfig);
+    axios.defaults.httpsAgent = new HttpsProxyAgent(agentConfig);
+}
 
 async function mainPageFinder(imdbId) {
     try {
