@@ -2,12 +2,14 @@
   "name": "turkcealtyazi-stremio-addon",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "images": "images"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js",
+    "serve": "npm run start",
+    "dev": "npm run start"
   },
   "engines": {
     "node": "14.16.0",

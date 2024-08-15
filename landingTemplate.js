@@ -103,14 +103,6 @@ button:active {
 function landingTemplate(manifest) {
 	const background = manifest.background || 'https://dl.strem.io/addon-background.jpg'
 	const logo = manifest.logo || 'https://dl.strem.io/addon-logo.png'
-	const contactHTML = manifest.contactEmail ?
-		`<div class="contact">
-         <p>Contact ${manifest.name} creator:</p>
-         <a href="mailto:${manifest.contactEmail}">${manifest.contactEmail}</a>
-      </div>` : ''
-
-	const stylizedTypes = manifest.types
-		.map(t => t[0].toUpperCase() + t.slice(1) + (t !== 'series' ? 's' : ''))
 
 	return `
    <!DOCTYPE html>
@@ -124,9 +116,6 @@ function landingTemplate(manifest) {
    </head>
 	<body>
       <div id="addon">
-         <div class="logo">
-            <img src="${logo}">
-         </div>
          <h1 class="name">${manifest.name}</h1>
          <h2 class="version">${manifest.version || '0.0.0'}</h2>
          <h2 class="description">${manifest.description || ''}</h2>
@@ -142,14 +131,6 @@ function landingTemplate(manifest) {
             <button name="Install">YÜKLE</button>
          </a>
          <div class="separator"></div>
-         <div class="separator"></div>
-         <p>TurkceAltyazi.org yurtdışından erişimde CloudFlare ile korunduğundan bu eklentinin çeşitli maliyetleri olmaktadır. Bu maliyetleri ne kadar uzun süre karşılayabilirim bilemediğimden yapacağınız en küçük bağış eklentinin hayatta kalabilmesi için faydalı olacaktır.<br>
-         <p><b>BTC:</b> 1QC9HKAdibRAQuXxrt3RMtWaUKCU5XznDs<br>
-         <p><b>ETH, USDT, USDC, BUSD (ERC20 / BEP20):</b> 0x2f807adfb3daf3d25a65861912124f0b408023cf<br>
-         <div class="separator"></div>
-
-         <p>İletişim: gorlevdev@gmail.com<br>
-
       </div>
       <script>
          installLink.href = 'stremio://' + window.location.host + '/addon/manifest.json'
